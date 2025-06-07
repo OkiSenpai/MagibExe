@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=µ, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #fadeOutP {
+            background-color: antiquewhite;
+            padding: 15px;
+            border: solid 1px;
+        }
+        
+    </style>
+    <title>Magib exe</title>
+</head>
+
+<body>
+    <div id="exe1">
+        <!-- (fadeOut + remove) -->
+        <h3>Exercice 1 : Alert Temporaire </h3>
+        <button id="fadeOutBtn">Aficher une alerte</button>
+        <p id="fadeOutP" style="display: none;">Ceci cest une alerte temporaire</p>
+
+    </div>
+    <div id="exe2">
+        <!-- (slideTogle + text) -->
+        <h3>Exercice 2 : Afficher / Masquer une section </h3>
+        <button id="togleeBtn">Togle</button>
+        <p id="textExe2"></p>
+    </div>
+    <div id="exe3">
+        <!-- (replaceWith, before, after, fadein ) -->
+        <h3>Exercice 3 : Formulaire avec confirmation </h3>
+        <input type="text" id="text" placeholder="Votre Nom">
+        <button id="replaceBtn">Replace</button>
+    </div>
+
+    <script>
+        $("#fadeOutBtn").click(function () {
+            $("#fadeOutP").css("display", "block");
+            $("#fadeOutP").fadeOut(5000, function () {
+                $(this).remove();
+            });
+        });
+
+        $("#togleeBtn").click(function () {
+            $("#textExe2").text("voici des informations importantes")
+            $("#textExe2").slideToggle();
+        })
+
+        $("#replaceBtn").click(function () {
+            $("#text").replaceWith("<h3 id='try'>Formulaire envoyé !</h3>")
+            $("#try").before("<p>Merci de remplir notre formulaire </p>")
+            $("#try").after("<p>Nous vous repondrons bientot</p>")
+
+            $("#replaceBtn").replaceWith("<p id='btnRempleur'>Votre message a bien été envoyé </p>")
+            $("#btnRempleur").after("<p id='fadInMessage' style='display:none; color: red;'> Red message </p> ")
+            $("#fadInMessage").fadeIn(5000)
+        })
+    </script>
+</body>
+
+</html>
